@@ -75,7 +75,7 @@ app.use(apiRoutes,
   apiRol
 );
 
-const port = 3306;
+const port = 3001;
 
 app.listen(port, () => {
   console.log(`Servidor backend conectado en el puerto ${port}`);
