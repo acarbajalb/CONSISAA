@@ -29,7 +29,7 @@ import apiRol from './apiRol.js'
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",  
-  password: "1234proyecto_", 
+  password: "", 
   database: "consisa",
 });
 
@@ -75,7 +75,7 @@ app.use(apiRoutes,
   apiRol
 );
 
-const port = 3001;
+const port = 3306;
 
 app.listen(port, () => {
   console.log(`Servidor backend conectado en el puerto ${port}`);
