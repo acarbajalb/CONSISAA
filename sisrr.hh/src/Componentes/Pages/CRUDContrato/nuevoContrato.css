@@ -1,0 +1,239 @@
+/* Estilo del Formulario Crear */
+.CrearContrato {
+  margin-top: 50px;
+  margin-bottom: 95px;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 700px; 
+  height: 385px;
+  background-color: white;
+  align-items: center; 
+}
+
+/* Estilos de los Input */
+.custom-input {
+  width: 200px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos de Label */
+.custom-label {
+  font-size: 12px;
+  margin-left: 20px;
+  margin-right: 5px;
+  flex-grow: 1;
+  /* Permite que el label se expanda según su contenido */
+}
+
+/* Estilos básicos del select */
+.custom-select {
+  width: 190px;
+  /* Ancho del select */
+  padding: 5px;
+  /* Espacio interno alrededor del contenido */
+  font-size: 12px;
+  /* Tamaño de la fuente */
+  border: 1px solid #ccc;
+  /* Borde del select */
+  border-radius: 5px;
+  /* Esquinas redondeadas */
+  outline: none;
+  /* Elimina el resaltado del borde al hacer clic */
+  cursor: pointer;
+  /* Cambia el cursor al pasar sobre el select */
+}
+
+.custom-select:focus {
+  border-color: #7125ff;
+  /* Color del borde al estar enfocado */
+}
+
+.custom-select::after {
+  content: '\25BC';
+  /* Código de la flecha hacia abajo */
+  position: absolute;
+  /* Posición absoluta en relación con el select */
+  top: 50%;
+  /* Alinea verticalmente el ícono en el centro */
+  right: 10px;
+  /* Alinea el ícono a la derecha del select */
+  transform: translateY(-50%);
+  /* Ajusta la posición vertical del ícono */
+  pointer-events: none;
+  /* Evita que el ícono interfiera con el clic en el select */
+}
+
+[crear-contrato="true"] .form-buttons-crear {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  /* Para alinear los botones horizontalmente */
+}
+
+.button-spacing {
+  margin-left: 20px;
+  /* Ajusta este valor según la separación deseada */
+}
+
+[crear-contrato="true"].input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* Para alinear verticalmente los elementos en el centro */
+}
+
+.error-message {
+  position: absolute;
+  bottom: -20px;
+  /* Posiciona el mensaje justo debajo del input */
+  left: 0;
+  margin-bottom: 5px;
+}
+
+
+
+/*Nuevos Estilo*/
+/*Alineación de Barra de Busqueda y Botones*/
+/*Barra de Busqueda*/
+[crear-contrato="true"] .search-container {
+  position: relative;
+  margin-right: 40%;
+  margin-top: 1px;
+  margin-bottom: 20px;
+}
+
+[crear-contrato="true"] .search-input {
+  padding-left: 30px;
+  border-radius: 10px;
+  width: 280px;
+  height: 35px;
+  border-color: transparent;
+  background-color: rgb(231, 231, 231);
+}
+
+
+.input-empleado {
+  margin-left: 100%;
+  width: 75px;
+  margin-top: -120px;
+
+}
+
+[crear-contrato="true"] .search-input:focus {
+  outline: none;
+  border-color: #9d00ff;
+}
+
+[crear-contrato="true"] .icon {
+  position: absolute;
+  top: 60%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+}
+
+/* Agrega estos estilos al final de tu archivo CSS */
+.search-results {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #8d3737;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background-color: #f5f5f5;
+}
+
+
+/* Estilos de Label */
+.input-group {
+  position: relative;
+  margin-top: 1px;
+}
+
+.input-group label {
+  position: absolute;
+  top: -6px; /* Posición arriba del input */
+  left: 7px;
+  color: #979797;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -6px; /* Posición arriba del input */
+  left: 15px;
+  font-size: 12px;
+  padding: 0 2px;
+  color: #979797;
+}
+
+
+/* Estilos de Label */
+[crear-contrato="true"] .flew-row {
+  position: relative;
+}
+
+[crear-contrato="true"].flew-row label {
+  position: absolute;
+  top: -6px; /* Posición arriba del input */
+  left: 7px;
+  color: #979797;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  top: -6px; /* Posición arriba del input */
+  left: 15px;
+  font-size: 12px;
+  padding: 0 2px;
+  color: #979797;
+}
+
+
+
+/* Estilos de FECHAS */
+.input-group-fechas { 
+  position: relative;
+  margin-top: 13px;
+  
+}
+
+.input-group-fechas label {
+  position: absolute;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #979797;
+  font-size: 12px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+input:focus~label,
+input:valid~label {
+  top: 0;
+  left: 15px;
+  font-size: 12px;
+  padding: 0 2px;
+  color: #979797;
+}

@@ -1,0 +1,140 @@
+/* Estilo del Formulario Crear */
+.CrearPuesto {
+    margin-top: 50px;
+    margin-bottom: 95px;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 700px; /* Cambiar el ancho según sea necesario */
+    height: 450px;
+    background-color: white;
+    align-items: center; /* Para alinear los elementos horizontalmente */
+}
+
+/* Estilos de los Input */
+.custom-input {
+    width: 200px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos de Label */
+.custom-label {
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 5px;
+    flex-grow: 1; /* Permite que el label se expanda según su contenido */
+}
+
+/* Estilos básicos del select */
+.custom-select {
+    width: 200px; /* Ancho del select */
+    padding: 5px; /* Espacio interno alrededor del contenido */
+    font-size: 12px; /* Tamaño de la fuente */
+    border: 1px solid #ccc; /* Borde del select */
+    border-radius: 5px; /* Esquinas redondeadas */
+    outline: none; /* Elimina el resaltado del borde al hacer clic */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el select */
+}
+
+.custom-select:focus {
+    border-color: #7125ff; /* Color del borde al estar enfocado */
+}
+
+.custom-select::after {
+    content: '\25BC'; /* Código de la flecha hacia abajo */
+    position: absolute; /* Posición absoluta en relación con el select */
+    top: 50%; /* Alinea verticalmente el ícono en el centro */
+    right: 10px; /* Alinea el ícono a la derecha del select */
+    transform: translateY(-50%); /* Ajusta la posición vertical del ícono */
+    pointer-events: none; /* Evita que el ícono interfiera con el clic en el select */
+}
+
+.form-buttons-crear {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Para alinear los botones horizontalmente */
+}
+
+.button-spacing {
+    margin-left: 20px; /* Ajusta este valor según la separación deseada */
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-group {
+    margin-right: 20px; /* Espacio entre los grupos de input */
+    position: relative;
+}
+
+.error-message {
+    position: absolute;
+    bottom: -20px; /* Posiciona el mensaje justo debajo del input */
+    left: 0;
+    margin-bottom: 5px;
+}
+
+
+/* Estilos de Label */
+[Nuevo-Puesto = "true"] .input-group {
+    position: relative;
+    margin-top: 13px;
+  }
+  
+  [Nuevo-Puesto = "true"]  .input-group label {
+    position: absolute;
+    top: -6px; /* Posición arriba del input */
+    left: 7px;
+    color: #979797;
+    font-size: 12px;
+    pointer-events: none;
+  }
+  
+  [Nuevo-Puesto = "true"] input:focus ~ label,
+  [Nuevo-Puesto = "true"] input:valid ~ label {
+    top: -6px; /* Posición arriba del input */
+    left: 15px;
+    font-size: 12px;
+    padding: 0 2px;
+    color: #979797;
+  }
+
+
+  /*Nuevos Estilo*/
+/*Alineación de Barra de Busqueda y Botones*/
+/*Barra de Busqueda*/
+[Nuevo-Puesto = "true"] .search-container {
+    position: relative;
+    margin-right: 40%;
+    margin-bottom: 20px;
+  }
+  
+  [Nuevo-Puesto = "true"] .search-input {
+    padding-left: 30px;
+    border-radius: 10px;
+    width: 350px;
+    height: 35px;
+    border-color: transparent;
+    background-color: rgb(231, 231, 231);
+  }
+
+  [Nuevo-Puesto = "true"] .search-input:focus {
+    outline: none;
+    border-color: #9d00ff;
+  }  
+
+  [Nuevo-Puesto = "true"] .icon {
+    position: absolute;
+    top: 28px;
+    left: 10px;
+    color: #999;
+    font-size: 18px;
+  }
+
+
+
+

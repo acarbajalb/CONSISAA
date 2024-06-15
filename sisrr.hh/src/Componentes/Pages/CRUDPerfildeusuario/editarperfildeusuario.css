@@ -1,0 +1,119 @@
+/* Estilo del Contenedor del Formulario de Edición de Perfil */
+.editar-perfil-container {
+  margin-top: 15px;
+  margin-bottom: 125px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 750px; /* Cambiar el ancho según sea necesario */
+  height: auto;
+  background-color: #fff; /* Fondo blanco para mejor contraste */
+  align-items: center; /* Alinear elementos horizontalmente */
+  padding: 20px; /* Añadir relleno para mejorar la apariencia */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
+}
+
+[perfil-usuario-edit="true"] .Title-Edit {
+  color: #515151;
+  margin-bottom: 20px;
+  text-align: center; /* Center align the heading */
+}
+
+/* Estilos de los Grupos de Formulario */
+[perfil-usuario-edit="true"]  .editar-perfil-container .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Grupos de formulario ocupan todo el ancho */
+  margin-bottom: 15px; /* Margen inferior para separar grupos */
+}
+
+/* Estilos de las Etiquetas */
+[perfil-usuario-edit="true"] .editar-perfil-container .label {
+  font-size: 16px; /* Tamaño de fuente más grande para las etiquetas */
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 5px; /* Margen inferior para separar de los inputs */
+  color: #333; /* Color de texto más oscuro */
+}
+
+/* Estilos de los Inputs */
+[perfil-usuario-edit="true"] .editar-perfil-container .input[type="email"],
+[perfil-usuario-edit="true"] .editar-perfil-container .input[type="password"],
+[perfil-usuario-edit="true"] .editar-perfil-container .input[type="text"] {
+  width: 100%; /* Ancho del input al 100% */
+  padding: 10px; /* Aumentado el espacio interno del input */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+  font-size: 14px; /* Tamaño de fuente para el texto del input */
+}
+
+/* Estilos de los Inputs con foco */
+[perfil-usuario-edit="true"] .editar-perfil-container .input[type="email"]:focus,
+[perfil-usuario-edit="true"] .editar-perfil-container .input[type="password"]:focus,
+[perfil-usuario-edit="true"] .editar-perfil-container .input[type="text"]:focus {
+  border-color: #7125ff; /* Color del borde al estar enfocado */
+}
+
+/* Estilos del Botón de Buscar Usuario */
+ .editar-perfil-container .button-buscar {
+  background-color: #7125ff;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animación de cambio de color al hover */
+}
+
+[perfil-usuario-edit="true"]  .editar-perfil-container .button-buscar:hover {
+  background-color: #5a1cc4; /* Cambio de color al pasar el cursor sobre el botón */
+}
+
+/* Estilos del Contenedor de Botones */
+ .editar-perfil-container .button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Añadir margen superior al contenedor de botones */
+}
+
+/* Estilos de los Botones Actualizar Perfil y Cancelar */
+ .editar-perfil-container .button-container button {
+  margin-left: 10px; /* Añadir margen izquierdo a todos los botones */
+  padding: 10px 20px; /* Aumentado el espacio interno del botón */
+  background-color: #7125ff; /* Color de fondo azul */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animación de cambio de color al hover */
+}
+
+.editar-perfil-container .button-container button:hover {
+  background-color: #5a1cc4; /* Cambio de color al pasar el cursor sobre el botón */
+}
+
+
+/* Estilos de Label */
+[perfil-usuario-edit="true"] .input-group {
+  position: relative;
+  margin-top: 13px;
+}
+
+[perfil-usuario-edit="true"] .input-group label {
+  position: absolute;
+  top: -6px; /* Posición arriba del input */
+  left: 7px;
+  color: #979797;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+[perfil-usuario-edit="true"] input:focus ~ label,
+[perfil-usuario-edit="true"] input:valid ~ label {
+  top: -6px; /* Posición arriba del input */
+  left: 15px;
+  font-size: 12px;
+  padding: 0 2px;
+  color: #979797;
+}
