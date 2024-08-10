@@ -1,0 +1,114 @@
+/* Estilo del Formulario Verificar Correo */
+/* Estilo del Overlay del Modal */
+[data-maintenance-correo="true"] .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el overlay */
+    display: flex;
+    align-items: center; /* Centra el modal verticalmente */
+    justify-content: center; /* Centra el modal horizontalmente */
+    z-index: 1000; /* Asegura que el modal esté sobre otros contenidos */
+  }
+  
+  /* Estilo del Contenido del Modal */
+  [data-maintenance-correo="true"] .modal-content {
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: white;
+    padding: 20px; /* Espaciado interno */
+    width: 550px; /* Ancho del modal */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea el contenido horizontalmente */
+  }
+  
+/* Estilos de los Input */
+[data-maintenance-correo="true"] .custom-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Agregué margen para separar el input de otros elementos */
+}
+
+/* Estilos de los Botones */
+[data-maintenance-correo="true"] .modal-buttons {
+    display: flex;
+    justify-content: space-between; /* Espacio uniforme entre los botones */
+    width: 100%; /* Asegura que los botones ocupen el ancho completo del contenedor */
+    margin-top: 20px; /* Espacio superior para separar los botones del contenido */
+}
+
+[data-maintenance-correo="true"] .modal-buttons button {
+    flex: 1; /* Cada botón ocupa el mismo espacio */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px; /* Espacio entre los botones */
+    cursor: pointer;
+}
+
+[data-maintenance-correo="true"] .modal-buttons button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+[data-maintenance-correo="true"] .modal-buttons button:last-child {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Estilos básicos del select */
+[data-maintenance-correo="true"] .custom-select {
+    width: 100%; /* Ancho del select ajustado para ocupar todo el ancho disponible */
+    padding: 10px; /* Espacio interno alrededor del contenido */
+    font-size: 12px; /* Tamaño de la fuente */
+    border: 1px solid #ccc; /* Borde del select */
+    border-radius: 5px; /* Esquinas redondeadas */
+    outline: none; /* Elimina el resaltado del borde al hacer clic */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el select */
+    margin-bottom: 15px; /* Agregué margen para separar el select de otros elementos */
+}
+
+[data-maintenance-correo="true"].custom-select:focus {
+    border-color: #007bff; /* Color del borde al estar enfocado */
+}
+
+[data-maintenance-correo="true"] .custom-select::after {
+    content: '\25BC'; /* Código de la flecha hacia abajo */
+    position: flex; /* Posición absoluta en relación con el select */
+    top: 50%; /* Alinea verticalmente el ícono en el centro */
+    right: 10px; /* Alinea el ícono a la derecha del select */
+    transform: translateY(-50%); /* Ajusta la posición vertical del ícono */
+    pointer-events: none; /* Evita que el ícono interfiera con el clic en el select */
+}
+
+[data-maintenance-correo="true"] .form-buttons-Verificar {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Para alinear los botones horizontalmente */
+}
+
+[data-maintenance-correo="true"].button-spacing {
+    margin-left: 20px; /* Ajusta este valor según la separación deseada */
+}
+
+[data-maintenance-correo="true"] .input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+[data-maintenance-correo="true"] .input-group {
+    margin-right: 20px; /* Espacio entre los grupos de input */
+    position: relative;
+}
+
+[data-maintenance-correo="true"].error-message {
+    position: absolute;
+    bottom: -20px; /* Posiciona el mensaje justo debajo del input */
+    left: 0;
+    margin-bottom: 5px;
+}

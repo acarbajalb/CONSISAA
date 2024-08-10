@@ -1,0 +1,103 @@
+
+/* Estilo del Formulario Crear */
+[data-maintenance-contrasena="true"] .Primer-Ingreso {
+    margin-top: 50px;
+    margin-bottom: 95px;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 550px; /* Cambiar el ancho según sea necesario */
+    height: 300px;
+    background-color: white;
+    align-items: center; /* Para alinear los elementos horizontalmente */
+}
+
+/* Estilos de los Input */
+[data-maintenance-contrasena="true"] .custom-input {
+    width: 200px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos de Label */
+[data-maintenance-contrasena="true"]  .custom-label {
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 5px;
+    flex-grow: 1; /* Permite que el label se expanda según su contenido */
+}
+
+/* Estilos básicos del select */
+[data-maintenance-contrasena="true"] .custom-select {
+    width: 200px; /* Ancho del select */
+    padding: 5px; /* Espacio interno alrededor del contenido */
+    font-size: 12px; /* Tamaño de la fuente */
+    border: 1px solid #ccc; /* Borde del select */
+    border-radius: 5px; /* Esquinas redondeadas */
+    outline: none; /* Elimina el resaltado del borde al hacer clic */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el select */
+}
+
+[data-maintenance-contrasena="true"]  .custom-select:focus {
+    border-color: #7125ff; /* Color del borde al estar enfocado */
+}
+
+[data-maintenance-contrasena="true"] .custom-select::after {
+    content: '\25BC'; /* Código de la flecha hacia abajo */
+    position: absolute; /* Posición absoluta en relación con el select */
+    top: 50%; /* Alinea verticalmente el ícono en el centro */
+    right: 10px; /* Alinea el ícono a la derecha del select */
+    transform: translateY(-50%); /* Ajusta la posición vertical del ícono */
+    pointer-events: none; /* Evita que el ícono interfiera con el clic en el select */
+}
+
+[data-maintenance-contrasena="true"] .form-buttons-guardar-ingreso {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Para alinear los botones horizontalmente */
+}
+
+[data-maintenance-contrasena="true"] .button-spacing {
+    margin-left: 20px; /* Ajusta este valor según la separación deseada */
+}
+
+[data-maintenance-contrasena="true"] .input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+[data-maintenance-contrasena="true"] .input-group {
+    margin-right: 20px; /* Espacio entre los grupos de input */
+    position: relative;
+}
+
+[data-maintenance-contrasena="true"] .error-message {
+    position: absolute;
+    bottom: -20px; /* Posiciona el mensaje justo debajo del input */
+    left: 0;
+    margin-bottom: 5px;
+}
+
+
+  /*Alineaciones*/
+  [data-maintenance-contrasena="true"] .input-container {
+    display: flex; /* Utilizamos flexbox para alinear los elementos */
+    justify-content: space-between; /* Distribuye uniformemente el espacio entre los elementos */
+}
+
+[data-maintenance-contrasena="true"] .input-container .flex-row {
+  flex: 1; /* Ajusta el ancho de los elementos hijos para que ocupen todo el espacio disponible */
+  display: flex; /* Utilizamos flexbox para alinear los elementos */
+  gap: 10px; /* Espacio entre los elementos internos */
+}
+
+[data-maintenance-contrasena="true"] .input-container .custom-label {
+  flex: 1; /* Cada elemento ocupa todo el espacio disponible */
+}
+
+[data-maintenance-contrasena="true"] .input-container select {
+  width: 100%; /* Los selectores ocupan todo el ancho disponible */
+}
+  
+

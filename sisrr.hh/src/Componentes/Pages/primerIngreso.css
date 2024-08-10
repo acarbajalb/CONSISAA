@@ -1,0 +1,103 @@
+
+/* Estilo del Formulario Crear */
+.Primer-Ingreso {
+    margin-top: 50px;
+    margin-bottom: 95px;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 550px; /* Cambiar el ancho según sea necesario */
+    height: 180px;
+    background-color: white;
+    align-items: center; /* Para alinear los elementos horizontalmente */
+}
+
+/* Estilos de los Input */
+.custom-input {
+    width: 200px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos de Label */
+.custom-label {
+    font-size: 12px;
+    margin-left: 20px;
+    margin-right: 5px;
+    flex-grow: 1; /* Permite que el label se expanda según su contenido */
+}
+
+/* Estilos básicos del select */
+.custom-select {
+    width: 200px; /* Ancho del select */
+    padding: 5px; /* Espacio interno alrededor del contenido */
+    font-size: 12px; /* Tamaño de la fuente */
+    border: 1px solid #ccc; /* Borde del select */
+    border-radius: 5px; /* Esquinas redondeadas */
+    outline: none; /* Elimina el resaltado del borde al hacer clic */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el select */
+}
+
+.custom-select:focus {
+    border-color: #7125ff; /* Color del borde al estar enfocado */
+}
+
+.custom-select::after {
+    content: '\25BC'; /* Código de la flecha hacia abajo */
+    position: absolute; /* Posición absoluta en relación con el select */
+    top: 50%; /* Alinea verticalmente el ícono en el centro */
+    right: 10px; /* Alinea el ícono a la derecha del select */
+    transform: translateY(-50%); /* Ajusta la posición vertical del ícono */
+    pointer-events: none; /* Evita que el ícono interfiera con el clic en el select */
+}
+
+.form-buttons-guardar-ingreso {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Para alinear los botones horizontalmente */
+}
+
+.button-spacing {
+    margin-left: 20px; /* Ajusta este valor según la separación deseada */
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-group {
+    margin-right: 20px; /* Espacio entre los grupos de input */
+    position: relative;
+}
+
+.error-message {
+    position: absolute;
+    bottom: -20px; /* Posiciona el mensaje justo debajo del input */
+    left: 0;
+    margin-bottom: 5px;
+}
+
+
+  /*Alineaciones*/
+  .input-container {
+    display: flex; /* Utilizamos flexbox para alinear los elementos */
+    justify-content: space-between; /* Distribuye uniformemente el espacio entre los elementos */
+}
+
+.input-container .flex-row {
+  flex: 1; /* Ajusta el ancho de los elementos hijos para que ocupen todo el espacio disponible */
+  display: flex; /* Utilizamos flexbox para alinear los elementos */
+  gap: 10px; /* Espacio entre los elementos internos */
+}
+
+.input-container .custom-label {
+  flex: 1; /* Cada elemento ocupa todo el espacio disponible */
+}
+
+.input-container select {
+  width: 100%; /* Los selectores ocupan todo el ancho disponible */
+}
+  
+
