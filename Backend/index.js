@@ -30,7 +30,7 @@ import apiBackupRestore from './apiBackupRestore.js'
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",  
-  password: "1234proyecto_", 
+  password: "", 
   database: "consisa",
 });
 
