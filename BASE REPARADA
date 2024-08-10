@@ -1,843 +1,578 @@
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
---
--- Host: localhost    Database: consisa
--- ------------------------------------------------------
--- Server version	8.0.36
-create database consisa;
-use consisa;
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+-- MySQL Workbench Forward Engineering
 
---
--- Table structure for table `tbl_area`
---
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-DROP TABLE IF EXISTS `tbl_area`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_area` (
-  `Id_area` int NOT NULL AUTO_INCREMENT,
-  `Nombre_area` varchar(30) NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_area`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema consisa
+-- -----------------------------------------------------
 
---
--- Dumping data for table `tbl_area`
---
+-- -----------------------------------------------------
+-- Schema consisa
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `consisa` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `consisa` ;
 
-LOCK TABLES `tbl_area` WRITE;
-/*!40000 ALTER TABLE `tbl_area` DISABLE KEYS */;
-INSERT INTO `tbl_area` VALUES (1,'TECNOLOGIA','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(2,'MARKETING','Marilyn Mejia','ROCKETMIND','2024-03-16 00:00:00','2024-05-26 22:15:41'),(3,'CONTABLE','ROCKETMIND','ROCKETMIND','2024-05-26 22:05:48','2024-05-26 22:05:48'),(4,'CONTABLES','ROCKETMIND','ROCKETMIND','2024-05-26 22:32:30','2024-05-26 22:32:30');
-/*!40000 ALTER TABLE `tbl_area` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_area`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_area` (
+  `Id_area` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_area` VARCHAR(30) NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_area`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_contrato`
---
 
-DROP TABLE IF EXISTS `tbl_contrato`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_contrato` (
-  `Id_Contrato` int NOT NULL AUTO_INCREMENT,
-  `Id_Empleado` int NOT NULL,
-  `Id_Tipo_Contrato` int NOT NULL,
-  `Cantidad_Acumulada_Vacaciones` int NOT NULL,
-  `Fecha_Contratacion` datetime NOT NULL,
-  `Fecha_Fin_Contrato` datetime NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Contrato`),
-  KEY `FK_Contrato_Empleado_idx` (`Id_Empleado`),
-  KEY `FK_Contrato_TipoContrato_idx` (`Id_Tipo_Contrato`),
-  CONSTRAINT `FK_Contrato_Empleado` FOREIGN KEY (`Id_Empleado`) REFERENCES `tbl_empleado` (`Id_Empleado`),
-  CONSTRAINT `FK_Contrato_TipoContrato` FOREIGN KEY (`Id_Tipo_Contrato`) REFERENCES `tbl_tipo_contrato` (`Id_Tipo_Contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_estado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_estado` (
+  `Id_Estado` INT NOT NULL AUTO_INCREMENT,
+  `Estado` VARCHAR(10) NOT NULL,
+  PRIMARY KEY (`Id_Estado`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_contrato`
---
 
-LOCK TABLES `tbl_contrato` WRITE;
-/*!40000 ALTER TABLE `tbl_contrato` DISABLE KEYS */;
-INSERT INTO `tbl_contrato` VALUES (1,1,1,50,'2024-03-31 00:00:00','2024-03-31 00:00:00','Josue Pineda','Josue Pineda','2024-03-31 00:00:00','2024-03-31 00:00:00'),(2,8,1,0,'2024-04-22 00:00:00','2025-05-02 00:00:00','ROCKETMIND','ROCKETMIND','2024-04-21 22:12:56','2024-05-24 22:18:28'),(3,6,1,5,'2023-11-01 00:00:00','2024-05-01 00:00:00','ROCKETMIND','ROCKETMIND','2024-04-24 23:13:53','2024-04-24 23:13:53'),(4,3,2,5,'2023-11-01 00:00:00','9999-12-31 00:00:00','ROCKETMIND','ROCKETMIND','2024-04-24 23:18:14','2024-04-24 23:18:14'),(11,9,1,1,'2024-05-01 00:00:00','2024-06-01 00:00:00','ROCKETMIND','ROCKETMIND','2024-05-24 22:56:24','2024-05-24 22:56:24');
-/*!40000 ALTER TABLE `tbl_contrato` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_estado_civil`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_estado_civil` (
+  `Id_EstadoCivil` INT NOT NULL AUTO_INCREMENT,
+  `Estado_civil` VARCHAR(15) NULL DEFAULT NULL,
+  PRIMARY KEY (`Id_EstadoCivil`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 15
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_departamento`
---
 
-DROP TABLE IF EXISTS `tbl_departamento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_departamento` (
-  `Id_departamento` int NOT NULL AUTO_INCREMENT,
-  `Nombre_departamento` varchar(30) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_departamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4; 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_genero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_genero` (
+  `Id_Genero` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_Genero` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`Id_Genero`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 20
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_departamento`
---
 
-LOCK TABLES `tbl_departamento` WRITE;
-/*!40000 ALTER TABLE `tbl_departamento` DISABLE KEYS */;
-INSERT INTO `tbl_departamento` VALUES (1,'TI COLON','Marilyn Mejia','ROCKETMIND','2024-03-16 00:00:00','2024-05-26 21:00:16'),(2,'TI TEGUCIGALPA','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(3,'TI CHOLUTECA','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(4,'SOPORTE TECNICO TEGUCIGALPA','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(5,'SOPORTE TECNICO SPS','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(6,'SOPORTE TECNICO VALLE','ROCKETMIND','ROCKETMIND','2024-05-26 20:44:20','2024-05-26 20:44:20'),(7,'TI GRACIAS A DIOS','ROCKETMIND','ROCKETMIND','2024-05-26 21:21:09','2024-05-26 21:21:09'),(8,'SOPORTE TECNICO COLON','ROCKETMIND','ROCKETMIND','2024-05-26 21:28:55','2024-05-26 21:28:55'),(9,'TI COPAN','ROCKETMIND','ROCKETMIND','2024-05-26 21:30:04','2024-05-26 22:11:16'),(10,'SOPORTE TECNICO COPAN','ROCKETMIND','ROCKETMIND','2024-05-26 21:32:17','2024-05-26 21:32:17'),(11,'MANTENIMIENTO COLON','ROCKETMIND','ROCKETMIND','2024-05-26 21:37:16','2024-05-26 21:37:16');
-/*!40000 ALTER TABLE `tbl_departamento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_detalle_contrato`
---
-
-DROP TABLE IF EXISTS `tbl_detalle_contrato`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_detalle_contrato` (
-  `Id_Detalle_Contrato` int NOT NULL AUTO_INCREMENT,
-  `Id_Contrato` int NOT NULL,
-  `Dias_Vacaciones_Tomadas` int NOT NULL,
-  `Fechas_Vacaciones_Tomadas` date NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Detalle_Contrato`),
-  KEY `FK_DetalleContrato_Contrato_idx` (`Id_Contrato`),
-  CONSTRAINT `FK_DetalleContrato_Contrato` FOREIGN KEY (`Id_Contrato`) REFERENCES `tbl_contrato` (`Id_Contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_detalle_contrato`
---
-
-LOCK TABLES `tbl_detalle_contrato` WRITE;
-/*!40000 ALTER TABLE `tbl_detalle_contrato` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_detalle_contrato` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_empleado`
---
-
-DROP TABLE IF EXISTS `tbl_empleado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_empleado` (
-  `Id_Empleado` int NOT NULL AUTO_INCREMENT,
-  `Id_Estado` int NOT NULL,
-  `Id_EstadoCivil` int NOT NULL,
-  `Id_Genero` int NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Apellido` varchar(50) NOT NULL,
-  `Direccion_vivienda` varchar(100) DEFAULT NULL,
-  `Salario` decimal(10,0) NOT NULL,
-  `Dni` varchar(15) NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_empleado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_empleado` (
+  `Id_Empleado` INT NOT NULL AUTO_INCREMENT,
+  `Id_Estado` INT NOT NULL,
+  `Id_EstadoCivil` INT NOT NULL,
+  `Id_Genero` INT NOT NULL,
+  `Nombre` VARCHAR(50) NOT NULL,
+  `Apellido` VARCHAR(50) NOT NULL,
+  `Direccion_vivienda` VARCHAR(100) NULL DEFAULT NULL,
+  `Salario` DECIMAL(10,0) NOT NULL,
+  `Dni` VARCHAR(15) NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
   PRIMARY KEY (`Id_Empleado`),
-  KEY `FK_Empleado_Genero_idx` (`Id_Genero`),
-  KEY `FK_Empleado_EstadoCivil_idx` (`Id_EstadoCivil`),
-  KEY `FK_Empleado_Estado_idx` (`Id_Estado`),
-  CONSTRAINT `FK_Empleado_Estado` FOREIGN KEY (`Id_Estado`) REFERENCES `tbl_estado` (`Id_Estado`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `FK_Empleado_EstadoCivil` FOREIGN KEY (`Id_EstadoCivil`) REFERENCES `tbl_estado_civil` (`Id_EstadoCivil`),
-  CONSTRAINT `FK_Empleado_Genero` FOREIGN KEY (`Id_Genero`) REFERENCES `tbl_genero` (`Id_Genero`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 ;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  UNIQUE INDEX `Dni_UNIQUE` (`Dni` ASC) VISIBLE,
+  INDEX `FK_Empleado_Genero_idx` (`Id_Genero` ASC) VISIBLE,
+  INDEX `FK_Empleado_EstadoCivil_idx` (`Id_EstadoCivil` ASC) VISIBLE,
+  INDEX `FK_Empleado_Estado_idx` (`Id_Estado` ASC) VISIBLE,
+  CONSTRAINT `FK_Empleado_Estado`
+    FOREIGN KEY (`Id_Estado`)
+    REFERENCES `consisa`.`tbl_estado` (`Id_Estado`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `FK_Empleado_EstadoCivil`
+    FOREIGN KEY (`Id_EstadoCivil`)
+    REFERENCES `consisa`.`tbl_estado_civil` (`Id_EstadoCivil`),
+  CONSTRAINT `FK_Empleado_Genero`
+    FOREIGN KEY (`Id_Genero`)
+    REFERENCES `consisa`.`tbl_genero` (`Id_Genero`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 37
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_empleado`
---
 
-LOCK TABLES `tbl_empleado` WRITE;
-/*!40000 ALTER TABLE `tbl_empleado` DISABLE KEYS */;
-INSERT INTO `tbl_empleado` VALUES (1,1,1,1,'Marilyn','Mejia','TGU',20000,'0801-2000-5463','Marilyn Mejia','Marilyn Mejia','2024-03-03 00:00:00','2024-03-03 00:00:00'),(2,1,1,2,'Elan','David','TGU',20000,'0801-2000-5478','Marilyn Mejia','Marilyn Mejia','2024-03-03 00:00:00','2024-03-03 00:00:00'),(3,1,1,1,'Maria ','Mejia',NULL,30000,'0801-2000-5400','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(4,1,2,2,'EDUARDO ','MATAMOROS','TGU',30000,'0801-1998-27631','D4NP1N3D4198','D4NP1N3D4198','2024-04-15 21:53:55','2024-04-15 21:53:55'),(5,1,1,2,'ISAAC','DIAZ','FLOR 1 ',1000,'0801-2002-06514','ROCKETMIND','ROCKETMIND','2024-04-21 13:01:52','2024-04-21 13:01:52'),(6,1,1,2,'RICARDO','MADURO','FLOR 1 ',1000,'0801-2002-05120','ROCKETMIND','ROCKETMIND','2024-04-21 13:36:07','2024-04-21 13:36:07'),(7,1,1,2,' IVONNE ALEJANDRA','AMADOR DIAZ','FLOR 1 ',10000,'0801-1997-06548','ROCKETMIND','ROCKETMIND','2024-04-21 21:19:40','2024-04-21 21:19:40'),(8,0,1,2,'KEVIN JOEL','HERNANDEZ DIAZ','FLOR 1 ',10000,'0801-2003-06575','ROCKETMIND','ROCKETMIND','2024-04-21 21:25:24','2024-05-13 18:57:41'),(9,1,2,1,'ERIKA','WILLIAM','FLOR DEL CAMPO',30000,'1503-2000-23672','ROCKETMIND','ROCKETMIND','2024-05-14 15:53:56','2024-05-14 15:53:56');
-/*!40000 ALTER TABLE `tbl_empleado` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_tipo_contrato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_tipo_contrato` (
+  `Id_Tipo_Contrato` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_Contrato` VARCHAR(50) NULL DEFAULT NULL,
+  `Descripcion` VARCHAR(100) NULL DEFAULT NULL,
+  `Creado_Por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Tipo_Contrato`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_empleado_movimientovacaciones`
---
 
-DROP TABLE IF EXISTS `tbl_empleado_movimientovacaciones`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_empleado_movimientovacaciones` (
-  `Id_Empleado` int NOT NULL,
-  `Id_MovimientoVacaciones` int NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Empleado`,`Id_MovimientoVacaciones`),
-  KEY `FK_EmpleadoMovimientoVacaciones_MovimientoVacaciones_idx` (`Id_MovimientoVacaciones`),
-  CONSTRAINT `FK_EmpleadoMovimientoVacaciones_Empleado` FOREIGN KEY (`Id_Empleado`) REFERENCES `tbl_empleado` (`Id_Empleado`),
-  CONSTRAINT `FK_EmpleadoMovimientoVacaciones_MovimientoVacaciones` FOREIGN KEY (`Id_MovimientoVacaciones`) REFERENCES `tbl_movimiento_vacaciones` (`Id_MovimientoVacaciones`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_contrato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_contrato` (
+  `Id_Contrato` INT NOT NULL AUTO_INCREMENT,
+  `Id_Empleado` INT NOT NULL,
+  `Id_Tipo_Contrato` INT NOT NULL,
+  `Cantidad_Acumulada_Vacaciones` INT NOT NULL,
+  `Fecha_Contratacion` DATETIME NOT NULL,
+  `Fecha_Fin_Contrato` DATETIME NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Contrato`),
+  INDEX `FK_Contrato_Empleado_idx` (`Id_Empleado` ASC) VISIBLE,
+  INDEX `FK_Contrato_TipoContrato_idx` (`Id_Tipo_Contrato` ASC) VISIBLE,
+  CONSTRAINT `FK_Contrato_Empleado`
+    FOREIGN KEY (`Id_Empleado`)
+    REFERENCES `consisa`.`tbl_empleado` (`Id_Empleado`),
+  CONSTRAINT `FK_Contrato_TipoContrato`
+    FOREIGN KEY (`Id_Tipo_Contrato`)
+    REFERENCES `consisa`.`tbl_tipo_contrato` (`Id_Tipo_Contrato`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 12
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_empleado_movimientovacaciones`
---
 
-LOCK TABLES `tbl_empleado_movimientovacaciones` WRITE;
-/*!40000 ALTER TABLE `tbl_empleado_movimientovacaciones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_empleado_movimientovacaciones` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_departamento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_departamento` (
+  `Id_departamento` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_departamento` VARCHAR(30) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_departamento`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 12
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_estado`
---
 
-DROP TABLE IF EXISTS `tbl_estado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_estado` (
-  `Id_Estado` int NOT NULL AUTO_INCREMENT,
-  `Estado` varchar(10) NOT NULL,
-  PRIMARY KEY (`Id_Estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 ;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_detalle_contrato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_detalle_contrato` (
+  `Id_Detalle_Contrato` INT NOT NULL AUTO_INCREMENT,
+  `Id_Contrato` INT NOT NULL,
+  `Dias_Vacaciones_Tomadas` INT NOT NULL,
+  `Fechas_Vacaciones_Tomadas` DATE NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Detalle_Contrato`),
+  INDEX `FK_DetalleContrato_Contrato_idx` (`Id_Contrato` ASC) VISIBLE,
+  CONSTRAINT `FK_DetalleContrato_Contrato`
+    FOREIGN KEY (`Id_Contrato`)
+    REFERENCES `consisa`.`tbl_contrato` (`Id_Contrato`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_estado`
---
 
-LOCK TABLES `tbl_estado` WRITE;
-/*!40000 ALTER TABLE `tbl_estado` DISABLE KEYS */;
-INSERT INTO `tbl_estado` VALUES (0,'Innactivo'),(1,'Activo'),(2,'Vacacion'),(3,'Bloqueado'),(6,'PENDIENTE');
-/*!40000 ALTER TABLE `tbl_estado` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_movimiento_vacaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_movimiento_vacaciones` (
+  `Id_MovimientoVacaciones` INT NOT NULL AUTO_INCREMENT,
+  `Revision_Dias` INT NULL DEFAULT NULL,
+  `Cantidad_Dias` INT NULL DEFAULT NULL,
+  `Fecha_Transaccion` DATETIME NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_MovimientoVacaciones`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_estado_civil`
---
 
-DROP TABLE IF EXISTS `tbl_estado_civil`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_estado_civil` (
-  `Id_EstadoCivil` int NOT NULL AUTO_INCREMENT,
-  `Estado_civil` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`Id_EstadoCivil`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_empleado_movimientovacaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_empleado_movimientovacaciones` (
+  `Id_Empleado` INT NOT NULL,
+  `Id_MovimientoVacaciones` INT NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Empleado`, `Id_MovimientoVacaciones`),
+  INDEX `FK_EmpleadoMovimientoVacaciones_MovimientoVacaciones_idx` (`Id_MovimientoVacaciones` ASC) VISIBLE,
+  CONSTRAINT `FK_EmpleadoMovimientoVacaciones_Empleado`
+    FOREIGN KEY (`Id_Empleado`)
+    REFERENCES `consisa`.`tbl_empleado` (`Id_Empleado`),
+  CONSTRAINT `FK_EmpleadoMovimientoVacaciones_MovimientoVacaciones`
+    FOREIGN KEY (`Id_MovimientoVacaciones`)
+    REFERENCES `consisa`.`tbl_movimiento_vacaciones` (`Id_MovimientoVacaciones`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_estado_civil`
---
 
-LOCK TABLES `tbl_estado_civil` WRITE;
-/*!40000 ALTER TABLE `tbl_estado_civil` DISABLE KEYS */;
-INSERT INTO `tbl_estado_civil` VALUES (1,'Soltero'),(2,'Casado'),(14,'UNION LIBRE');
-/*!40000 ALTER TABLE `tbl_estado_civil` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_estado_de_solicitud`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_estado_de_solicitud` (
+  `Id_Estado_Solicitud` INT NOT NULL AUTO_INCREMENT,
+  `Estado_Solicitud` VARCHAR(10) NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Estado_Solicitud`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_estado_de_solicitud`
---
 
-DROP TABLE IF EXISTS `tbl_estado_de_solicitud`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_estado_de_solicitud` (
-  `Id_Estado_Solicitud` int NOT NULL AUTO_INCREMENT,
-  `Estado_Solicitud` varchar(10) NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Estado_Solicitud`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_objeto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_objeto` (
+  `Id_objeto` INT NOT NULL AUTO_INCREMENT,
+  `Objeto` VARCHAR(100) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(300) NULL DEFAULT NULL,
+  `Tipo_objeto` VARCHAR(15) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_objeto`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 191
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_estado_de_solicitud`
---
 
-LOCK TABLES `tbl_estado_de_solicitud` WRITE;
-/*!40000 ALTER TABLE `tbl_estado_de_solicitud` DISABLE KEYS */;
-INSERT INTO `tbl_estado_de_solicitud` VALUES (1,'Denegada','Marilyn Mejia','Marilyn Mejia','2024-03-31 00:00:00','2024-03-31 00:00:00'),(2,'Aprobada','Marilyn Mejia','Marilyn Mejia','2024-03-31 00:00:00','2024-03-31 00:00:00'),(3,'Pendiente','Marilyn Mejia','Marilyn Mejia','2024-03-31 00:00:00','2024-03-31 00:00:00');
-/*!40000 ALTER TABLE `tbl_estado_de_solicitud` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_puesto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_puesto` (
+  `Id_Puesto` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_puesto` VARCHAR(50) NOT NULL,
+  `Salario_inicial` DECIMAL(10,0) NULL DEFAULT NULL,
+  `Techo_salario` DECIMAL(10,0) NULL DEFAULT NULL,
+  `Requisitos_puesto` VARCHAR(100) NOT NULL,
+  `Descripcion_puesto` VARCHAR(100) NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  `Id_Jefe` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`Id_Puesto`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 13
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_genero`
---
 
-DROP TABLE IF EXISTS `tbl_genero`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_genero` (
-  `Id_Genero` int NOT NULL AUTO_INCREMENT,
-  `Nombre_Genero` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id_Genero`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_rol`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_rol` (
+  `Id_Rol` INT NOT NULL AUTO_INCREMENT,
+  `Rol` VARCHAR(30) NULL DEFAULT NULL,
+  `Descripcion` VARCHAR(300) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Rol`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_genero`
---
 
-LOCK TABLES `tbl_genero` WRITE;
-/*!40000 ALTER TABLE `tbl_genero` DISABLE KEYS */;
-INSERT INTO `tbl_genero` VALUES (1,'Femenino'),(2,'Masculino'),(12,' Otro'),(14,'NO BINARIO'),(15,''),(16,'M');
-/*!40000 ALTER TABLE `tbl_genero` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_movimiento_vacaciones`
---
-
-DROP TABLE IF EXISTS `tbl_movimiento_vacaciones`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_movimiento_vacaciones` (
-  `Id_MovimientoVacaciones` int NOT NULL AUTO_INCREMENT,
-  `Revision_Dias` int DEFAULT NULL,
-  `Cantidad_Dias` int DEFAULT NULL,
-  `Fecha_Transaccion` datetime NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_MovimientoVacaciones`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_movimiento_vacaciones`
---
-
-LOCK TABLES `tbl_movimiento_vacaciones` WRITE;
-/*!40000 ALTER TABLE `tbl_movimiento_vacaciones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_movimiento_vacaciones` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_bitacora`
---
-
-DROP TABLE IF EXISTS `tbl_ms_bitacora`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_bitacora` (
-  `Id_bitacora` int NOT NULL AUTO_INCREMENT,
-  `Id_usuario` int NOT NULL,
-  `Id_Objeto` int NOT NULL,
-  `Fecha` datetime DEFAULT NULL,
-  `Accion` varchar(20) DEFAULT NULL,
-  `Descripcion` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`Id_bitacora`),
-  KEY `FK_bitacora_usuario_idx` (`Id_usuario`),
-  KEY `FK_bitacora_objeto_idx` (`Id_Objeto`),
-  CONSTRAINT `FK_bitacora_objeto` FOREIGN KEY (`Id_Objeto`) REFERENCES `tbl_ms_objeto` (`Id_objeto`),
-  CONSTRAINT `FK_bitacora_usuario` FOREIGN KEY (`Id_usuario`) REFERENCES `tbl_ms_usuario` (`Id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=1451 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_ms_bitacora`
---
-
-LOCK TABLES `tbl_ms_bitacora` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_bitacora` DISABLE KEYS */;
-INSERT INTO `tbl_ms_bitacora` VALUES (1387,76,2,'2024-06-01 01:26:56','Inicio sesión','El usuario inicio sesion de manera correcta'),(1388,76,1,'2024-06-01 01:26:56','Entro a Inicio','El usuario esta en el incio del sistema'),(1389,76,5,'2024-06-01 01:27:03','Obtener Empleados','Se obtuvieron los Empleados'),(1390,76,5,'2024-06-01 01:27:03','Obtener Empleados','Se obtuvieron los Empleados'),(1391,76,2,'2024-06-01 01:36:15','Inicio sesión','El usuario inicio sesion de manera correcta'),(1392,76,1,'2024-06-01 01:36:15','Entro a Inicio','El usuario esta en el incio del sistema'),(1393,76,9,'2024-06-01 01:36:18','Obtener Usuarios','Se obtuvieron los usuarios'),(1394,76,9,'2024-06-01 01:36:18','Obtener Usuarios','Se obtuvieron los usuarios'),(1396,76,9,'2024-06-01 01:36:31','Obtener Usuarios','Se obtuvieron los usuarios'),(1397,76,9,'2024-06-01 01:36:34','Obtener Usuarios','Se obtuvieron los usuarios'),(1398,76,9,'2024-06-01 01:36:34','Obtener Usuarios','Se obtuvieron los usuarios'),(1399,76,9,'2024-06-01 01:39:26','Obtener Usuarios','Se obtuvieron los usuarios'),(1400,76,9,'2024-06-01 01:39:43','Obtener Usuarios','Se obtuvieron los usuarios'),(1402,76,9,'2024-06-01 01:40:01','Obtener Usuarios','Se obtuvieron los usuarios'),(1403,76,9,'2024-06-01 01:40:06','Obtener Usuarios','Se obtuvieron los usuarios'),(1404,76,9,'2024-06-01 01:40:06','Obtener Usuarios','Se obtuvieron los usuarios'),(1405,76,9,'2024-06-01 01:45:05','Obtener Usuarios','Se obtuvieron los usuarios'),(1406,76,9,'2024-06-01 01:45:10','Obtener Usuarios','Se obtuvieron los usuarios'),(1407,76,9,'2024-06-01 01:51:50','Obtener Usuarios','Se obtuvieron los usuarios'),(1408,76,9,'2024-06-01 01:51:50','Obtener Usuarios','Se obtuvieron los usuarios'),(1409,76,9,'2024-06-01 01:52:06','Obtener Usuarios','Se obtuvieron los usuarios'),(1410,76,9,'2024-06-01 01:52:06','Obtener Usuarios','Se obtuvieron los usuarios'),(1411,76,9,'2024-06-01 01:52:30','Obtener Usuarios','Se obtuvieron los usuarios'),(1412,76,9,'2024-06-01 01:52:30','Obtener Usuarios','Se obtuvieron los usuarios'),(1413,76,9,'2024-06-01 01:56:19','Obtener Usuarios','Se obtuvieron los usuarios'),(1414,76,2,'2024-06-01 03:59:57','Inicio sesión','El usuario inicio sesion de manera correcta'),(1415,76,1,'2024-06-01 03:59:57','Entro a Inicio','El usuario esta en el incio del sistema'),(1416,76,9,'2024-06-01 04:00:57','Obtener Usuarios','Se obtuvieron los usuarios'),(1417,76,9,'2024-06-01 04:00:57','Obtener Usuarios','Se obtuvieron los usuarios'),(1419,76,9,'2024-06-01 04:01:52','Obtener Usuarios','Se obtuvieron los usuarios'),(1420,76,9,'2024-06-01 04:01:55','Obtener Usuarios','Se obtuvieron los usuarios'),(1421,76,9,'2024-06-01 04:01:55','Obtener Usuarios','Se obtuvieron los usuarios'),(1422,76,3,'2024-06-01 04:03:20','Autoregistro','El usuario se registró en el sistema'),(1423,76,2,'2024-06-01 04:04:16','Inicio sesión','El usuario inicio sesion de manera correcta'),(1424,76,1,'2024-06-01 04:04:16','Entro a Inicio','El usuario esta en el incio del sistema'),(1425,76,9,'2024-06-01 04:04:19','Obtener Usuarios','Se obtuvieron los usuarios'),(1426,76,9,'2024-06-01 04:04:19','Obtener Usuarios','Se obtuvieron los usuarios'),(1428,76,9,'2024-06-01 04:04:34','Obtener Usuarios','Se obtuvieron los usuarios'),(1429,105,2,'2024-06-01 04:04:54','Inicio sesión','El usuario inicio sesion de manera correcta'),(1430,105,1,'2024-06-01 04:04:54','Entro a Inicio','El usuario esta en el incio del sistema'),(1431,76,2,'2024-06-01 04:06:42','Inicio sesión','El usuario inicio sesion de manera correcta'),(1432,76,1,'2024-06-01 04:06:42','Entro a Inicio','El usuario esta en el incio del sistema'),(1433,76,9,'2024-06-01 04:06:44','Obtener Usuarios','Se obtuvieron los usuarios'),(1434,76,9,'2024-06-01 04:06:44','Obtener Usuarios','Se obtuvieron los usuarios'),(1436,76,9,'2024-06-01 04:07:03','Obtener Usuarios','Se obtuvieron los usuarios'),(1437,105,2,'2024-06-01 04:07:15','Inicio sesión','El usuario inicio sesion de manera correcta'),(1438,105,1,'2024-06-01 04:07:15','Entro a Inicio','El usuario esta en el incio del sistema'),(1439,76,2,'2024-06-01 04:07:40','Inicio sesión','El usuario inicio sesion de manera correcta'),(1440,76,1,'2024-06-01 04:07:40','Entro a Inicio','El usuario esta en el incio del sistema'),(1441,76,2,'2024-06-01 04:09:54','Inicio sesión','El usuario inicio sesion de manera correcta'),(1442,76,1,'2024-06-01 04:09:54','Entro a Inicio','El usuario esta en el incio del sistema'),(1443,76,2,'2024-06-01 04:10:19','Inicio sesión','El usuario inicio sesion de manera correcta'),(1444,76,1,'2024-06-01 04:10:19','Entro a Inicio','El usuario esta en el incio del sistema'),(1445,76,2,'2024-06-01 04:11:23','Inicio sesión','El usuario inicio sesion de manera correcta'),(1446,76,1,'2024-06-01 04:11:23','Entro a Inicio','El usuario esta en el incio del sistema'),(1447,76,2,'2024-06-01 04:12:42','Inicio sesión','El usuario inicio sesion de manera correcta'),(1448,76,1,'2024-06-01 04:12:42','Entro a Inicio','El usuario esta en el incio del sistema'),(1449,76,2,'2024-06-01 04:13:10','Inicio sesión','El usuario inicio sesion de manera correcta'),(1450,76,1,'2024-06-01 04:13:10','Entro a Inicio','El usuario esta en el incio del sistema');
-/*!40000 ALTER TABLE `tbl_ms_bitacora` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_historial_contraseña`
---
-
-DROP TABLE IF EXISTS `tbl_ms_historial_contraseña`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_historial_contraseña` (
-  `Id_historial_contraseña` int NOT NULL AUTO_INCREMENT,
-  `Id_usuario` int NOT NULL,
-  `Contraseña_pasada` varchar(45) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_historial_contraseña`),
-  KEY `Fk_HistorialContraseña_Usuario_idx` (`Id_usuario`),
-  CONSTRAINT `Fk_HistorialContraseña_Usuario` FOREIGN KEY (`Id_usuario`) REFERENCES `tbl_ms_usuario` (`Id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_ms_historial_contraseña`
---
-
-LOCK TABLES `tbl_ms_historial_contraseña` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_historial_contraseña` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_ms_historial_contraseña` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_objeto`
---
-
-DROP TABLE IF EXISTS `tbl_ms_objeto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_objeto` (
-  `Id_objeto` int NOT NULL AUTO_INCREMENT,
-  `Objeto` varchar(100) DEFAULT NULL,
-  `Descripcion` varchar(200) DEFAULT NULL,
-  `Tipo_objeto` varchar(15) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_objeto`)
-) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_ms_objeto`
---
-
-LOCK TABLES `tbl_ms_objeto` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_objeto` DISABLE KEYS */;
-INSERT INTO `tbl_ms_objeto` VALUES (1,'Inicio','Pantalla donde el usuario tendra la opcion de reidirigirse hacia varios espacio de el aplicativo','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(2,'Login','Pantalla donde el usuario tendra la opcion de ingresar al sistema, permitiendo poner su respectivo usuario y contraseña','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(3,'Registro','El usuario podra registrarse directamente desde el aplicativo ingresando los datos solicitados en dicha pantalla','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(4,'Recuperacion de contraseña','El usuario podra hacer recuperacion de su contraseña y modificacion de la misma mediante esta pantalla y su correo electronico','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(5,'Administrar empleados','Esta pantalla sera la principal para le gestion de empleados, aqui se podra ver los registros de los empleados dentro del aplicativo y tendra atajos para crear, editar o deshabilitar uno de ellos','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(6,'Crear Empleado','En esta pantalla los administradores  podran crear un nuevo registro de empleado con toda los datos generales e importantes de este','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(7,'Editar Empleado','En esta pantalla los administradores  podran  editar un registro de empleado con toda los datos anteriormente recabados','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(8,'Desactivar Empleado ','En esta pantalla los administradores podran desactividar el registro de un empleado si este renuncio o no esta mas en la empresa por alguna razon.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(9,'Administrar Usuarios','Esta pantalla sera la principal para le gestion de usuarios. Aqui se podra ver los registros de los usuarios dentro del aplicativo y tendra atajos para crear, editar o deshabilitar uno de ellos','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(10,'Crear usuario','En esta pantalla los administradores  podran crear un nuevo registro de usuario con toda los datos generales de este.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(11,'Editar Usuario','En esta pantalla los administradores  podran  editar un registro de usuario con toda los datos anteriormente recabados','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(12,'Bitacora','Apartado donde se registra cada accion dentro del sistema.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(13,'Contratos','Esta pantalla sera la principal para le gestion de los contratos de todos los usuario/empleados. Tendra atajos para crear, editar o deshabilitar uno de ellos','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(14,'Crear Contrato','En esta pantalla los administradores  podran crear un nuevo contrato para los empleados registrados del sistema.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(15,'Editar Contrato','En esta pantalla los administradores  podran editar un contrato de los empleados, previamente creado.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(16,'Desactivar Contrato','En esta pantalla los administradores  podran desactivar un contrato de los empleados, previamente creado.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(17,'Departamentos','Esta pantalla sera la principal para le gestion de los departamentos donde pertenece los empleados. Tendra atajos para crear, editar o deshabilitar uno de ellos.','Pantalla','Marilyn  Mejia ','2024-03-19 00:00:00','Marilyn  Mejia ','2024-03-19 00:00:00'),(18,'Crear Departamento','En esta pantalla los administradores  podran crear un nuevo departamento para los empleados registrados del sistema.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(142,'Editar Departamento','En esta pantalla los administradores  podran editar las caracteristicas de un departamento, previamente creado.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(143,'Desactivar Contrato','En esta pantalla los administradores  podran desactivar un departamenro entero, previamente creado.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(144,'Buzon de solicitudes','Apartado donde el administrador podra hacer el cambio de estado a una solicitud de vacaciones pendiente.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(145,'Mis Solicitudes','Apartado donde el usuario puede solicitar las vacaciones deseadas.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(146,'Acceso al sistema','Apartado donde el superUsuario maneja el acceso que tienen los diferentes tipos de usuario dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(147,'Parametros de seguridad','Aparatdo donde le superUsuario maneja la configuracion de inicio de sesio, cada cuanto cambia contraseña el usuario, entre otros.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(148,'Crear Solicitud de vacaciones','Apartado donde el usuario solicita los registros de vaca iones deseadas.','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(149,'Crear permiso','Apartado donde el superUsuario maneja el acceso que tienen los diferentes tipos de usuario dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(150,'Editar permiso','Apartado donde el superUsuario maneja el acceso que tienen los diferentes tipos de usuario dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-08 00:00:00','Marilyn  Mejia ','2024-04-08 00:00:00'),(151,'Genero','Apartado donde el superUsuario maneja los generos que maneja la empresa dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(152,'Crear genero','Apartado donde se ingresa otro tipo de genero','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(153,'Editar genero','Apartado donde se edita un tipo de genero ya creado.','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(154,'Estado civil','Apartado donde el superUsuario maneja los estados civiles que maneja la empresa dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(155,'Crear estado civil','Apartado donde se ingresa otro tipo de estado civil','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(156,'Editar estado civil','Apartado donde se edita un tipo de estado civil ya creado.','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(157,'Tipo telefono','Apartado donde el superUsuario maneja los tipos de telefono que maneja la empresa dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(158,'Crear tipo telefono','Apartado donde se ingresa otro tipo de telefono','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(159,'Editar tipo telefono','Apartado donde se edita un tipo de estado civil ya creado.','Pantalla','Marilyn  Mejia ','2024-04-17 17:40:19','Marilyn  Mejia ','2024-04-17 17:40:19'),(160,'Administrar puestos','Apartado donde el superUsuario maneja los puestos que maneja la empresa dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(161,'Crear puesto','Apartado donde se ingresa un nuevo puesto','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(162,'Editar puesto','Apartado donde se edita un registro de puesto ya creado.','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(163,'Area','Apartado donde el superUsuario maneja las areas que maneja la empresa dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(164,'Crear area','Apartado donde se ingresa otra area ','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(165,'Editar area','Apartado donde se edita un registro de area ya creado.','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(166,'Estado','Apartado donde el superUsuario maneja los estados/modos que maneja la empresa dentro del sistema','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(167,'Crear estado','Apartado donde se ingresa otro estado','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26'),(168,'Editar estado','Apartado donde se edita un registro de un estado ya creado.','Pantalla','Marilyn  Mejia ','2024-04-24 04:43:26','Marilyn  Mejia ','2024-04-24 04:43:26');
-/*!40000 ALTER TABLE `tbl_ms_objeto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_parametro`
---
-
-DROP TABLE IF EXISTS `tbl_ms_parametro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_parametro` (
-  `Id_parametro` int NOT NULL AUTO_INCREMENT,
-  `Id_usuario` int NOT NULL,
-  `Parametro` varchar(50) DEFAULT NULL,
-  `Valor` varchar(100) DEFAULT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  PRIMARY KEY (`Id_parametro`),
-  KEY `FK_parametro_usuario_idx` (`Id_usuario`),
-  CONSTRAINT `FK_parametro_usuario` FOREIGN KEY (`Id_usuario`) REFERENCES `tbl_ms_usuario` (`Id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_ms_parametro`
---
-
-LOCK TABLES `tbl_ms_parametro` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_parametro` DISABLE KEYS */;
-INSERT INTO `tbl_ms_parametro` VALUES (1,1,'ADMIN_INTENTOS','3','2024-04-17 09:14:41','Claudia Garcia','2024-04-17 09:14:41','Claudia Garcia'),(2,58,'ADMIN_VIGENCIA','30','2024-04-17 16:24:59','ROCKETMIND','2024-04-17 16:24:59','ROCKETMIND');
-/*!40000 ALTER TABLE `tbl_ms_parametro` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_permiso`
---
-
-DROP TABLE IF EXISTS `tbl_ms_permiso`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_permiso` (
-  `Id_objeto` int NOT NULL,
-  `Id_Rol` int NOT NULL,
-  `Permiso_insercion` varchar(1) DEFAULT NULL,
-  `Permiso_eliminacion` varchar(1) DEFAULT NULL,
-  `Permiso_actualizacion` varchar(1) DEFAULT NULL,
-  `Permiso_consultar` varchar(1) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  KEY `FK_Permiso_objeto_idx` (`Id_objeto`),
-  KEY `FK_permiso_rol_idx` (`Id_Rol`),
-  CONSTRAINT `FK_Permiso_objeto` FOREIGN KEY (`Id_objeto`) REFERENCES `tbl_ms_objeto` (`Id_objeto`),
-  CONSTRAINT `FK_permiso_rol` FOREIGN KEY (`Id_Rol`) REFERENCES `tbl_ms_rol` (`Id_Rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_ms_permiso`
---
-
-LOCK TABLES `tbl_ms_permiso` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_permiso` DISABLE KEYS */;
-INSERT INTO `tbl_ms_permiso` VALUES (146,8,'1','1','1','1','Marilyn Mejia','2024-04-09 00:00:00','ROCKETMIND','2024-04-24 04:38:31'),(145,1,'1','1','1','1','Marilyn Mejia','2024-04-09 00:00:00','ROCKETMIND','2024-04-20 21:25:11'),(2,1,'1','1','1','1','','2024-04-09 00:00:00','ROCKETMIND','2024-04-20 21:23:54'),(1,7,'1','1','1','1','MARY','2024-04-09 00:00:00','EDUARDITO','2024-04-15 22:46:12'),(146,5,'1','1','1','1','MARY','2024-04-09 00:00:00','ROCKETMIND','2024-04-20 20:38:39'),(147,4,'1','1','1','1','','2024-04-09 00:00:00','ROCKETMIND','2024-04-20 20:02:49'),(9,2,'1','0','0','0','ROCKETMIND','2024-04-24 03:42:58','ROCKETMIND','2024-04-24 04:05:58'),(5,6,'1','1','1','1','ROCKETMIND','2024-04-24 04:39:17','ROCKETMIND','2024-04-24 04:39:17'),(9,6,'1','1','1','1','ROCKETMIND','2024-04-24 04:39:34','ROCKETMIND','2024-04-24 04:39:34'),(160,7,'0','1','1','1','ROCKETMIND','2024-04-24 04:45:58','ROCKETMIND','2024-04-24 04:45:58');
-/*!40000 ALTER TABLE `tbl_ms_permiso` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_rol`
---
-
-DROP TABLE IF EXISTS `tbl_ms_rol`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_rol` (
-  `Id_Rol` int NOT NULL AUTO_INCREMENT,
-  `Rol` varchar(30) DEFAULT NULL,
-  `Descripcion` varchar(100) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_ms_rol`
---
-
-LOCK TABLES `tbl_ms_rol` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_rol` DISABLE KEYS */;
-INSERT INTO `tbl_ms_rol` VALUES (1,'Usuario','Privilegios limitados, solo interactua con ciertas acciones del aplicativo','Marilyn Mejia','2024-03-03 00:00:00','Marilyn Mejia','2024-03-03 00:00:00'),(2,'Supervisor','Puede validar las solicitudes de vacaciones del usuario','Marilyn Mejia','2024-03-03 00:00:00','Marilyn Mejia','2024-03-03 00:00:00'),(4,'RR.HH','Accede a todas las acciones del aplicativo, creando subadministradores','Marilyn Mejia','2024-03-03 00:00:00','Marilyn Mejia','2024-03-03 00:00:00'),(5,'Seguridad','Define los permisos que controlan qué acciones puede realizar un usuario dentro del sistema','Marilyn Mejia','2024-03-19 00:00:00','Marilyn Mejia','2024-03-19 00:00:00'),(6,'Gerente','Usuario creado directametne en el autoregistro,en espera de un rol especifico.','Marilyn Mejia','2024-03-19 00:00:00','Marilyn Mejia','2024-03-19 00:00:00'),(7,'Administrador ','Accede a todas las acciones del aplicativo propias de recursos humanos.','Marilyn Mejia','2024-03-19 00:00:00','Marilyn Mejia','2024-03-19 00:00:00'),(8,'SuperAdmin','Acceso a todas las acciones del sistema','Marilyn Mejia','2024-03-19 00:00:00','Marilyn Mejia','2024-03-19 00:00:00');
-/*!40000 ALTER TABLE `tbl_ms_rol` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_ms_usuario`
---
-
-DROP TABLE IF EXISTS `tbl_ms_usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_ms_usuario` (
-  `Id_usuario` int NOT NULL AUTO_INCREMENT,
-  `Id_Rol` int NOT NULL,
-  `Id_Puesto` int NOT NULL,
-  `Id_Empleado` int NOT NULL,
-  `Usuario` varchar(15) NOT NULL,
-  `Nombre_Completo_Usuario` varchar(40) NOT NULL,
-  `Contraseña` varchar(300) NOT NULL,
-  `Primer_ingreso` datetime DEFAULT NULL,
-  `Fecha_ultima_conexion` datetime DEFAULT NULL,
-  `Correo_electronico` varchar(50) NOT NULL,
-  `Fecha_vencimiento` datetime DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  `Id_delegado` int DEFAULT NULL,
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_usuario` (
+  `Id_usuario` INT NOT NULL AUTO_INCREMENT,
+  `Id_Rol` INT NOT NULL,
+  `Id_Puesto` INT NOT NULL,
+  `Id_Empleado` INT NOT NULL,
+  `Usuario` VARCHAR(15) NOT NULL,
+  `Nombre_Completo_Usuario` VARCHAR(40) NOT NULL,
+  `Contraseña` VARCHAR(300) NOT NULL,
+  `Primer_ingreso` DATETIME NULL DEFAULT NULL,
+  `Fecha_ultima_conexion` DATETIME NULL DEFAULT NULL,
+  `Correo_electronico` VARCHAR(50) NOT NULL,
+  `Fecha_vencimiento` DATETIME NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  `Id_delegado` INT NULL DEFAULT NULL,
   PRIMARY KEY (`Id_usuario`),
-  KEY `FK_usuario_rol_idx` (`Id_Rol`),
-  KEY `Fk_usuario_puesto_idx` (`Id_Puesto`),
-  KEY `FK_usuario_empleado_idx` (`Id_Empleado`),
-  CONSTRAINT `FK_usuario_empleado` FOREIGN KEY (`Id_Empleado`) REFERENCES `tbl_empleado` (`Id_Empleado`),
-  CONSTRAINT `FK_usuario_puesto` FOREIGN KEY (`Id_Puesto`) REFERENCES `tbl_puesto` (`Id_Puesto`),
-  CONSTRAINT `FK_usuario_rol` FOREIGN KEY (`Id_Rol`) REFERENCES `tbl_ms_rol` (`Id_Rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  INDEX `FK_usuario_rol_idx` (`Id_Rol` ASC) VISIBLE,
+  INDEX `Fk_usuario_puesto_idx` (`Id_Puesto` ASC) VISIBLE,
+  INDEX `FK_usuario_empleado_idx` (`Id_Empleado` ASC) VISIBLE,
+  CONSTRAINT `FK_usuario_empleado`
+    FOREIGN KEY (`Id_Empleado`)
+    REFERENCES `consisa`.`tbl_empleado` (`Id_Empleado`),
+  CONSTRAINT `FK_usuario_puesto`
+    FOREIGN KEY (`Id_Puesto`)
+    REFERENCES `consisa`.`tbl_puesto` (`Id_Puesto`),
+  CONSTRAINT `FK_usuario_rol`
+    FOREIGN KEY (`Id_Rol`)
+    REFERENCES `consisa`.`tbl_ms_rol` (`Id_Rol`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 102
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_ms_usuario`
---
 
-LOCK TABLES `tbl_ms_usuario` WRITE;
-/*!40000 ALTER TABLE `tbl_ms_usuario` DISABLE KEYS */;
-INSERT INTO `tbl_ms_usuario` VALUES (1,2,9,1,'MARILYNYAMILETH','Marilyn Yamileth Mejia Aguilar','213232323','2024-03-03 00:00:00','2024-03-03 00:00:00','mymejiaa@gmail.com','2024-04-03 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-03-03 00:00:00','2024-03-03 00:00:00',NULL),(39,5,1,1,'MARIA','Maria Carmina Mejia','00ytASASASASASAS',NULL,NULL,'mariagmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00',NULL),(40,1,11,1,'MARIA','Maria Carmina Mejia','00ytASASASASASAS',NULL,NULL,'mariagmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00',NULL),(58,1,1,1,'MARY','Mary mejia','$2b$10$bGWKtveClmcuGkYKfEAiNeSsrVqPkNwJSj0xc3tR.k3zece1KjdS.',NULL,NULL,'Mary@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00',NULL),(68,1,7,1,'DAN1EL19','JOSUE DANIEL BACA PINEDA','$2b$10$uUvKQcuXNAUXSJZh5/IVxOVNLodbGm0r/bSlRR5OlurP1SaStUOGu',NULL,NULL,'danielpineds16@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-04-14 00:00:00','2024-04-14 00:00:00',NULL),(69,1,7,1,'DANIELPINEDA90','JOSUE DANIEL BACA PINEDA','$2b$10$tyrXoCyZJu58LfoZvx.CW.f06UjAMhsuIEsNhpJg8zehu050k2TGa',NULL,NULL,'danielpineds16@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-04-14 00:00:00','2024-04-14 00:00:00',NULL),(70,4,11,1,'D4NP1N3D4198','DANIEL PINEDA','$2b$10$zgjHLqsbeL9xDF0AWRcJQ.8rUbH4909yoMKUW2DFLPYe/m5ZElshC',NULL,NULL,'danielpineds16@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-04-14 00:00:00','2024-04-14 00:00:00',NULL),(71,5,11,1,'ELAN89','ELAN DANIEL ROMERO','$2b$10$hWnmksg..Pa2coPOq/nxy.qp0m7WfYR/R4ivd3TRRxT.IN0qRW3Nq',NULL,NULL,'elanbb@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-04-14 00:00:00','2024-04-14 00:00:00',NULL),(72,2,10,1,'DANIEL9819','JOSUE DANIEL BACA PINEDA','-Dan1el19',NULL,NULL,'danielpineds16@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-02-12 00:00:00','2024-02-12 00:00:00',NULL),(73,2,9,1,'ELAN109','ELAN DANIEL ROMERO','$2b$10$nC6j4TR431FX2KDWSaMQ4eqSCToy/kw.7NE2jZ0OHEW4SxLvUWw0y',NULL,NULL,'elanbb@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-04-14 00:00:00','2024-04-14 00:00:00',NULL),(74,2,9,3,'MARY','Marilyn Mejia','$2b$10$NOiJaxnSwNt3jBpHvY8U.u4.Vsz7bJIX9/.PBkaky2XZRr9X3UU3O',NULL,NULL,'marilynyamilethmejia@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00',NULL),(75,5,9,4,'EDUARDITO','EDUARDO MATAMOROS','$2b$10$fw50eVrGHG6GmrD8/myIDul0rHGETum6cRY8XXoJHqaqfdWWYnmtW',NULL,NULL,'eduardo@gmail.com','2024-02-12 00:00:00','EDUARDITO','EDUARDITO','2024-04-15 21:57:06','2024-04-15 21:57:06',NULL),(76,8,7,1,'ROCKETMIND','ROCKETMIND','$2b$10$zgjHLqsbeL9xDF0AWRcJQ.8rUbH4909yoMKUW2DFLPYe/m5ZElshC','2024-04-19 16:22:28','2024-05-31 22:13:08','ROCKETMIND@gmail.com','2024-02-12 00:00:00','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00',95),(89,4,8,4,'EUDA','EDUARDO  MATAMOROS','$2b$10$kb4INJrGTOeifa2K0G1mcu0KLFgw.db3K8QwYsBvRLqlWmlwaOtEi','2024-04-21 12:28:50','2024-05-14 15:35:18','danielpineds16@gmail.com','2024-02-12 00:00:00','EUDA','EUDA','2024-04-21 12:28:27','2024-04-21 12:28:27',NULL),(90,2,8,3,'MARILINDA','Maria  Mejia','$2b$10$LfobZaNTF/B0wcFlu1tH9OaiJrXPj0FNCe8AxIRZkcOm0WtNFQupi','2024-04-21 12:30:54','2024-04-28 17:48:26','danielpineds16@gmail.com','2024-02-12 00:00:00','MARILINDA','MARILINDA','2024-04-21 12:30:36','2024-04-21 12:30:36',NULL),(91,6,8,2,'ELANBB','Elan David','$2b$10$c4P6JJxnDdQQpr9V8mL.g.dMGujX1mrm0bMYGptl.oH/qCcKDeBSC','2024-04-21 12:33:44',NULL,'danielpineds16@gmail.com','2024-02-12 00:00:00','ELANBB','ELANBB','2024-04-21 12:33:29','2024-04-21 12:33:29',NULL),(92,2,7,5,'ISAACDD','ISAAC DIAZ','$2b$10$BX22XMc17o57csu0/VEOTO.urpD/ypUtyrlXmveQ0bWSDweBpV/8O','2024-04-21 13:03:42',NULL,'kjoelh162003@gmail.com','2024-02-12 00:00:00','ISAACDD','ISAACDD','2024-04-21 13:02:33','2024-04-21 13:02:33',NULL),(93,1,7,6,'RICMAD','RICARDO MADURO','$2b$10$zp4CaFZe9BKb/9d7hX0cJeAqlyDNNfYao8ZyPPArGUKRY6Vn.1fhG','2024-04-21 13:37:30',NULL,'kjoelh162003@gmail.com','2024-02-12 00:00:00','RICMAD','RICMAD','2024-04-21 13:36:55','2024-04-21 13:36:55',NULL),(94,2,8,7,'IVONNALEDI',' IVONNE ALEJANDRA AMADOR DIAZ','$2b$10$t3CfPM303Rkfven.fhCDY.Oi6C5sRe7lpkwMQ0okhCkDb4SpGxfWG','2024-04-21 21:23:24',NULL,'kjoelh162003@gmail.com','2024-02-12 00:00:00','IVONNALEDI','IVONNALEDI','2024-04-21 21:22:46','2024-04-21 21:22:46',NULL),(95,1,7,8,'KJOELHD','KEVIN JOEL HERNANDEZ DIAZ','$2b$10$EsKy9UwoA2ms36eW7q29Mu7pTFw7Ct8pMOYgMjCAXms0rUQ2fedpW','2024-04-21 21:28:28',NULL,'kjoelh162003@gmail.com','2024-02-12 00:00:00','KJOELHD','ROCKETMIND','2024-04-21 21:27:57','2024-05-31 22:01:52',NULL),(105,1,7,9,'ERIKA','ERIKA WILLIAM','$2b$10$Oi9yrtTFxn8yNYy2o.y5sunY8WjRSaXpW3pPFGGiOHA0ZumxkvUNq','2024-05-31 22:05:11','2024-05-31 22:07:38','marilynyamilethmejia@gmail.com','2024-02-12 00:00:00','ERIKA','ROCKETMIND','2024-05-31 22:02:49','2024-05-31 22:07:03',NULL);
-/*!40000 ALTER TABLE `tbl_ms_usuario` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_bitacora`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_bitacora` (
+  `Id_bitacora` INT NOT NULL AUTO_INCREMENT,
+  `Id_usuario` INT NOT NULL,
+  `Id_Objeto` INT NOT NULL,
+  `Fecha` DATETIME NULL DEFAULT NULL,
+  `Accion` VARCHAR(300) NULL DEFAULT NULL,
+  `Descripcion` VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`Id_bitacora`),
+  INDEX `FK_bitacora_usuario_idx` (`Id_usuario` ASC) VISIBLE,
+  INDEX `FK_bitacora_objeto_idx` (`Id_Objeto` ASC) VISIBLE,
+  CONSTRAINT `FK_bitacora_objeto`
+    FOREIGN KEY (`Id_Objeto`)
+    REFERENCES `consisa`.`tbl_ms_objeto` (`Id_objeto`),
+  CONSTRAINT `FK_bitacora_usuario`
+    FOREIGN KEY (`Id_usuario`)
+    REFERENCES `consisa`.`tbl_ms_usuario` (`Id_usuario`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1992
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_puesto`
---
 
-DROP TABLE IF EXISTS `tbl_puesto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_puesto` (
-  `Id_Puesto` int NOT NULL AUTO_INCREMENT,
-  `Nombre_puesto` varchar(50) NOT NULL,
-  `Salario_inicial` decimal(10,0) DEFAULT NULL,
-  `Techo_salario` decimal(10,0) DEFAULT NULL,
-  `Requisitos_puesto` varchar(100) NOT NULL,
-  `Descripcion_puesto` varchar(100) NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  `Id_Jefe` int DEFAULT NULL,
-  PRIMARY KEY (`Id_Puesto`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_historial_contraseña`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_historial_contraseña` (
+  `Id_historial_contraseña` INT NOT NULL AUTO_INCREMENT,
+  `Id_usuario` INT NOT NULL,
+  `Contraseña_pasada` VARCHAR(45) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_historial_contraseña`),
+  INDEX `Fk_HistorialContraseña_Usuario_idx` (`Id_usuario` ASC) VISIBLE,
+  CONSTRAINT `Fk_HistorialContraseña_Usuario`
+    FOREIGN KEY (`Id_usuario`)
+    REFERENCES `consisa`.`tbl_ms_usuario` (`Id_usuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_puesto`
---
 
-LOCK TABLES `tbl_puesto` WRITE;
-/*!40000 ALTER TABLE `tbl_puesto` DISABLE KEYS */;
-INSERT INTO `tbl_puesto` VALUES (1,'Nuevo',20000,10000,'Licenciatura en Ciencias de la Computación o un campo relacionado.','Crea y mantiene aplicaciones de software.','Marilyn Mejia','Marilyn Mejia','2024-03-03 00:00:00','2024-03-03 00:00:00',NULL),(7,'JUNNIOR CHOLUTECA',10000,15000,'LICENCIATURA EN INFORMATICA','PROGRAMADOR JUNNIOR','ROCKETMIND','ROCKETMIND','2024-04-21 13:35:27','2024-04-21 13:35:27',NULL),(8,'SUPERVISOR DE TI',10000,20000,'LICENCIATURA EN INFORMATICA','SUPERVISARA A LOS PROGRAMADORES SENIOR Y JUNNIOR','ROCKETMIND','ROCKETMIND','2024-04-21 21:21:41','2024-04-21 21:21:41',NULL),(9,'SENIOR TEGUCIGALPA',10000,18000,'LICENCIATURA EN INFORMATICA','PROGRAMADOR SENIOR','ROCKETMIND','ROCKETMIND','2024-04-21 21:26:20','2024-04-21 21:26:20',8),(10,'JUNNIOR TEGUS',10000,15000,'LICENCIATURA EN INFORMATICA','PROGRAMADOR JUNNIOR','ROCKETMIND','ROCKETMIND','2024-04-23 04:01:02','2024-04-23 04:01:02',8),(11,'JUNNIOR TE',10000,15000,'LICENCIATURA EN INFORMATICA','PROGRAMADOR JUNNIOR','ROCKETMIND','ROCKETMIND','2024-04-23 04:41:05','2024-04-23 04:41:05',8);
-/*!40000 ALTER TABLE `tbl_puesto` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_parametro`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_parametro` (
+  `Id_parametro` INT NOT NULL AUTO_INCREMENT,
+  `Id_usuario` INT NOT NULL,
+  `Parametro` VARCHAR(50) NULL DEFAULT NULL,
+  `Valor` VARCHAR(100) NULL DEFAULT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`Id_parametro`),
+  INDEX `FK_parametro_usuario_idx` (`Id_usuario` ASC) VISIBLE,
+  CONSTRAINT `FK_parametro_usuario`
+    FOREIGN KEY (`Id_usuario`)
+    REFERENCES `consisa`.`tbl_ms_usuario` (`Id_usuario`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_puesto_departamento`
---
 
-DROP TABLE IF EXISTS `tbl_puesto_departamento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_puesto_departamento` (
-  `Id_departamento` int NOT NULL,
-  `Id_puesto` int NOT NULL,
-  `Id_area` int NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_departamento`,`Id_puesto`,`Id_area`),
-  KEY `FK_puesto/departamento_Puesto_idx` (`Id_puesto`),
-  KEY `FK_puesto/departamento_Area_idx` (`Id_area`),
-  CONSTRAINT `FK_puesto/departamento_Area` FOREIGN KEY (`Id_area`) REFERENCES `tbl_area` (`Id_area`),
-  CONSTRAINT `FK_puesto/departamento_departamento ` FOREIGN KEY (`Id_departamento`) REFERENCES `tbl_departamento` (`Id_departamento`),
-  CONSTRAINT `FK_puesto/departamento_Puesto` FOREIGN KEY (`Id_puesto`) REFERENCES `tbl_puesto` (`Id_Puesto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_ms_permiso`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_ms_permiso` (
+  `Id_objeto` INT NOT NULL,
+  `Id_Rol` INT NOT NULL,
+  `Permiso_insercion` VARCHAR(1) NULL DEFAULT NULL,
+  `Permiso_eliminacion` VARCHAR(1) NULL DEFAULT NULL,
+  `Permiso_actualizacion` VARCHAR(1) NULL DEFAULT NULL,
+  `Permiso_consultar` VARCHAR(1) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  INDEX `FK_Permiso_objeto_idx` (`Id_objeto` ASC) VISIBLE,
+  INDEX `FK_permiso_rol_idx` (`Id_Rol` ASC) VISIBLE,
+  CONSTRAINT `FK_Permiso_objeto`
+    FOREIGN KEY (`Id_objeto`)
+    REFERENCES `consisa`.`tbl_ms_objeto` (`Id_objeto`),
+  CONSTRAINT `FK_permiso_rol`
+    FOREIGN KEY (`Id_Rol`)
+    REFERENCES `consisa`.`tbl_ms_rol` (`Id_Rol`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `tbl_puesto_departamento`
---
 
-LOCK TABLES `tbl_puesto_departamento` WRITE;
-/*!40000 ALTER TABLE `tbl_puesto_departamento` DISABLE KEYS */;
-INSERT INTO `tbl_puesto_departamento` VALUES (2,8,1,'ROCKETMIND','ROCKETMIND','2024-04-21 21:21:41','2024-04-21 21:21:41'),(2,9,1,'ROCKETMIND','ROCKETMIND','2024-04-21 21:26:20','2024-04-21 21:26:20'),(2,10,1,'ROCKETMIND','ROCKETMIND','2024-04-23 04:01:02','2024-04-23 04:01:02'),(2,11,1,'ROCKETMIND','ROCKETMIND','2024-04-23 04:41:06','2024-04-23 04:41:06'),(3,7,1,'ROCKETMIND','ROCKETMIND','2024-04-21 13:35:27','2024-04-21 13:35:27');
-/*!40000 ALTER TABLE `tbl_puesto_departamento` ENABLE KEYS */;
-UNLOCK TABLES;
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_puesto_departamento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_puesto_departamento` (
+  `Id_departamento` INT NOT NULL,
+  `Id_puesto` INT NOT NULL,
+  `Id_area` INT NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_departamento`, `Id_puesto`, `Id_area`),
+  INDEX `FK_puesto/departamento_Puesto_idx` (`Id_puesto` ASC) VISIBLE,
+  INDEX `FK_puesto/departamento_Area_idx` (`Id_area` ASC) VISIBLE,
+  CONSTRAINT `FK_puesto/departamento_Area`
+    FOREIGN KEY (`Id_area`)
+    REFERENCES `consisa`.`tbl_area` (`Id_area`),
+  CONSTRAINT `FK_puesto/departamento_departamento `
+    FOREIGN KEY (`Id_departamento`)
+    REFERENCES `consisa`.`tbl_departamento` (`Id_departamento`),
+  CONSTRAINT `FK_puesto/departamento_Puesto`
+    FOREIGN KEY (`Id_puesto`)
+    REFERENCES `consisa`.`tbl_puesto` (`Id_Puesto`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `tbl_solicitud`
---
 
-DROP TABLE IF EXISTS `tbl_solicitud`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_solicitud` (
-  `Id_Solicitud` int NOT NULL AUTO_INCREMENT,
-  `Id_Estado_Solicitud` int NOT NULL,
-  `Id_Empleado` int NOT NULL,
-  `Id_Tipo_Solicitud` int NOT NULL,
-  `Fecha_Inicio_Vacaciones` date DEFAULT NULL,
-  `Fecha_Final_Vacaciones` date DEFAULT NULL,
-  `Hora_Inicio_Vacaciones` time DEFAULT NULL,
-  `Hora_Final_Vacaciones` time DEFAULT NULL,
-  `Fecha_Retorno_Vacaciones` date DEFAULT NULL,
-  `Tiempo_Parcial` tinyint DEFAULT NULL,
-  `Fecha_solicitud` date DEFAULT NULL,
-  `Observaciones` varchar(45) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_tipo_solicitud`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_tipo_solicitud` (
+  `Id_Tipo_Solicitud` INT NOT NULL AUTO_INCREMENT,
+  `Nombre_Solicitud` VARCHAR(50) NULL DEFAULT NULL,
+  `Descripcion_Solicitud` VARCHAR(300) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_Tipo_Solicitud`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_solicitud`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_solicitud` (
+  `Id_Solicitud` INT NOT NULL AUTO_INCREMENT,
+  `Id_Estado_Solicitud` INT NOT NULL,
+  `Id_Empleado` INT NOT NULL,
+  `Id_Tipo_Solicitud` INT NOT NULL,
+  `Fecha_Inicio_Vacaciones` DATE NULL DEFAULT NULL,
+  `Fecha_Final_Vacaciones` DATE NULL DEFAULT NULL,
+  `Hora_Inicio_Vacaciones` TIME NULL DEFAULT NULL,
+  `Hora_Final_Vacaciones` TIME NULL DEFAULT NULL,
+  `Fecha_Retorno_Vacaciones` DATE NULL DEFAULT NULL,
+  `Tiempo_Parcial` TINYINT NULL DEFAULT NULL,
+  `Fecha_solicitud` DATE NULL DEFAULT NULL,
+  `Observaciones` VARCHAR(45) NULL DEFAULT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
   PRIMARY KEY (`Id_Solicitud`),
-  KEY `FK_Solicitud_Empleado_idx` (`Id_Empleado`),
-  KEY `FK_Solicitud_EstadoSolicitud_idx` (`Id_Estado_Solicitud`),
-  KEY `FK_Solcitud_TipoSolicitud _idx` (`Id_Tipo_Solicitud`),
-  CONSTRAINT `FK_Solcitud_TipoSolicitud ` FOREIGN KEY (`Id_Tipo_Solicitud`) REFERENCES `tbl_tipo_solicitud` (`Id_Tipo_Solicitud`),
-  CONSTRAINT `FK_Solicitud_Empleado` FOREIGN KEY (`Id_Empleado`) REFERENCES `tbl_empleado` (`Id_Empleado`),
-  CONSTRAINT `FK_Solicitud_EstadoSolicitud` FOREIGN KEY (`Id_Estado_Solicitud`) REFERENCES `tbl_estado_de_solicitud` (`Id_Estado_Solicitud`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_solicitud`
---
-
-LOCK TABLES `tbl_solicitud` WRITE;
-/*!40000 ALTER TABLE `tbl_solicitud` DISABLE KEYS */;
-INSERT INTO `tbl_solicitud` VALUES (4,3,1,1,'2024-04-01','2024-04-04','07:00:00','07:00:00','2024-03-31',0,'2024-03-31',NULL,'Marilyn Mejia','Marilyn Mejia','2024-03-31 00:00:00','2024-03-31 00:00:00'),(5,2,2,1,'2024-04-07','2024-04-09','06:00:00','06:00:00','2024-04-09',0,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(6,3,3,1,'2024-04-08','2024-04-10','06:00:00','06:00:00','2024-04-09',1,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(7,3,1,1,'2024-04-09','2024-04-11','18:00:00','19:30:00','2024-04-10',1,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(8,3,6,1,'2024-04-22','2024-04-25','08:45:00','13:15:00','2024-04-24',1,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(9,2,8,1,'2024-04-22','2024-04-24','20:45:00','21:30:00','2024-04-23',1,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(10,1,8,1,'2024-04-26','2024-04-30','21:15:00','22:00:00','2024-04-29',1,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(11,1,8,1,'2024-05-01','2024-05-04','21:30:00','22:00:00','2024-05-03',1,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(12,3,3,1,'2024-04-25','2024-04-27','07:00:00','07:00:00','2024-04-26',0,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00'),(13,3,3,1,'2024-04-25','2024-04-26','01:30:00','04:30:00','2024-04-25',0,'2024-03-16','Listo','Marilyn Mejia','Marilyn Mejia','2024-03-16 00:00:00','2024-03-16 00:00:00');
-/*!40000 ALTER TABLE `tbl_solicitud` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_telefono_empleado`
---
-
-DROP TABLE IF EXISTS `tbl_telefono_empleado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_telefono_empleado` (
-  `Id_empleado` int NOT NULL,
-  `Id_tipo_telefono` int NOT NULL,
-  `Numero` varchar(15) NOT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_empleado`,`Id_tipo_telefono`),
-  KEY `FK_telefonooEmpleado_tipoTelefono_idx` (`Id_tipo_telefono`),
-  CONSTRAINT `FK_telefonoEmpleado_Empleado` FOREIGN KEY (`Id_empleado`) REFERENCES `tbl_empleado` (`Id_Empleado`),
-  CONSTRAINT `FK_telefonooEmpleado_tipoTelefono` FOREIGN KEY (`Id_tipo_telefono`) REFERENCES `tbl_tipo_telefono` (`Id_tipo_telefono`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_telefono_empleado`
---
-
-LOCK TABLES `tbl_telefono_empleado` WRITE;
-/*!40000 ALTER TABLE `tbl_telefono_empleado` DISABLE KEYS */;
-INSERT INTO `tbl_telefono_empleado` VALUES (1,1,'504 99441084','Marilyn Mejia','Marilyn Mejia','2024-07-04 00:00:00','2024-07-04 00:00:00'),(2,1,'504 87726168','Marilyn Mejia','Marilyn Mejia','2024-07-04 00:00:00','2024-07-04 00:00:00'),(4,1,'99441084','D4NP1N3D4198','D4NP1N3D4198','2024-04-15 21:53:55','2024-04-15 21:53:55'),(5,1,'95930798','ROCKETMIND','ROCKETMIND','2024-04-21 13:01:52','2024-04-21 13:01:52'),(6,1,'95930798','ROCKETMIND','ROCKETMIND','2024-04-21 13:36:07','2024-04-21 13:36:07'),(7,1,'94589445','ROCKETMIND','ROCKETMIND','2024-04-21 21:19:41','2024-04-21 21:19:41'),(8,1,'95930798','ROCKETMIND','ROCKETMIND','2024-04-21 21:25:24','2024-05-13 18:57:41'),(9,1,'99441084','ROCKETMIND','ROCKETMIND','2024-05-14 15:53:56','2024-05-14 15:53:56');
-/*!40000 ALTER TABLE `tbl_telefono_empleado` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_tipo_contrato`
---
-
-DROP TABLE IF EXISTS `tbl_tipo_contrato`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_tipo_contrato` (
-  `Id_Tipo_Contrato` int NOT NULL AUTO_INCREMENT,
-  `Nombre_Contrato` varchar(50) DEFAULT NULL,
-  `Descripcion` varchar(100) DEFAULT NULL,
-  `Creado_Por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Tipo_Contrato`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_tipo_contrato`
---
-
-LOCK TABLES `tbl_tipo_contrato` WRITE;
-/*!40000 ALTER TABLE `tbl_tipo_contrato` DISABLE KEYS */;
-INSERT INTO `tbl_tipo_contrato` VALUES (1,'OutSourcing','Empleado con pocos privilegios en la empresa','Josué Pineda','Josué Pineda','2024-03-31 00:00:00','2024-03-31 00:00:00'),(2,'Permanente','Empleado con privilegios en la empresa','Josué Pineda','Josué Pineda','2024-03-31 00:00:00','2024-03-31 00:00:00');
-/*!40000 ALTER TABLE `tbl_tipo_contrato` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_tipo_solicitud`
---
-
-DROP TABLE IF EXISTS `tbl_tipo_solicitud`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_tipo_solicitud` (
-  `Id_Tipo_Solicitud` int NOT NULL AUTO_INCREMENT,
-  `Nombre_Solicitud` varchar(50) DEFAULT NULL,
-  `Descripcion_Solicitud` varchar(100) DEFAULT NULL,
-  `Creado_por` varchar(15) NOT NULL,
-  `Modificado_por` varchar(15) NOT NULL,
-  `Fecha_creacion` datetime NOT NULL,
-  `Fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`Id_Tipo_Solicitud`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_tipo_solicitud`
---
-
-LOCK TABLES `tbl_tipo_solicitud` WRITE;
-/*!40000 ALTER TABLE `tbl_tipo_solicitud` DISABLE KEYS */;
-INSERT INTO `tbl_tipo_solicitud` VALUES (1,'Vacaciones ','Vacaciones por semana santa','Marilyn Mejia','Marilyn Mejia','2024-03-31 00:00:00','2024-03-31 00:00:00');
-/*!40000 ALTER TABLE `tbl_tipo_solicitud` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_tipo_telefono`
---
-
-DROP TABLE IF EXISTS `tbl_tipo_telefono`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_tipo_telefono` (
-  `Id_tipo_telefono` int NOT NULL AUTO_INCREMENT,
-  `Descripcion` varchar(20) NOT NULL,
-  PRIMARY KEY (`Id_tipo_telefono`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 ;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_tipo_telefono`
---
-
-LOCK TABLES `tbl_tipo_telefono` WRITE;
-/*!40000 ALTER TABLE `tbl_tipo_telefono` DISABLE KEYS */;
-INSERT INTO `tbl_tipo_telefono` VALUES (1,'Celular'),(2,'Telefono de casa');
-/*!40000 ALTER TABLE `tbl_tipo_telefono` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+  INDEX `FK_Solicitud_Empleado_idx` (`Id_Empleado` ASC) VISIBLE,
+  INDEX `FK_Solicitud_EstadoSolicitud_idx` (`Id_Estado_Solicitud` ASC) VISIBLE,
+  INDEX `FK_Solcitud_TipoSolicitud _idx` (`Id_Tipo_Solicitud` ASC) VISIBLE,
+  CONSTRAINT `FK_Solcitud_TipoSolicitud `
+    FOREIGN KEY (`Id_Tipo_Solicitud`)
+    REFERENCES `consisa`.`tbl_tipo_solicitud` (`Id_Tipo_Solicitud`),
+  CONSTRAINT `FK_Solicitud_Empleado`
+    FOREIGN KEY (`Id_Empleado`)
+    REFERENCES `consisa`.`tbl_empleado` (`Id_Empleado`),
+  CONSTRAINT `FK_Solicitud_EstadoSolicitud`
+    FOREIGN KEY (`Id_Estado_Solicitud`)
+    REFERENCES `consisa`.`tbl_estado_de_solicitud` (`Id_Estado_Solicitud`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
-DELIMITER //
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_tipo_telefono`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_tipo_telefono` (
+  `Id_tipo_telefono` INT NOT NULL AUTO_INCREMENT,
+  `Descripcion` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`Id_tipo_telefono`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE TRIGGER calcular_vacaciones_acumuladas BEFORE INSERT ON tbl_contrato
-FOR EACH ROW
-BEGIN
-    DECLARE vacaciones_acumuladas DECIMAL(10, 2); -- Utiliza DECIMAL para mayor precisión
 
-    -- Calcular la antigüedad en días
-    DECLARE antiguedad INT;
-    SET antiguedad = TIMESTAMPDIFF(DAY, NEW.Fecha_Contratacion, NOW());
+-- -----------------------------------------------------
+-- Table `consisa`.`tbl_telefono_empleado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `consisa`.`tbl_telefono_empleado` (
+  `Id_empleado` INT NOT NULL,
+  `Id_tipo_telefono` INT NOT NULL,
+  `Numero` VARCHAR(15) NOT NULL,
+  `Creado_por` VARCHAR(15) NOT NULL,
+  `Modificado_por` VARCHAR(15) NOT NULL,
+  `Fecha_creacion` DATETIME NOT NULL,
+  `Fecha_modificacion` DATETIME NOT NULL,
+  PRIMARY KEY (`Id_empleado`, `Id_tipo_telefono`),
+  INDEX `FK_telefonooEmpleado_tipoTelefono_idx` (`Id_tipo_telefono` ASC) VISIBLE,
+  CONSTRAINT `FK_telefonoEmpleado_Empleado`
+    FOREIGN KEY (`Id_empleado`)
+    REFERENCES `consisa`.`tbl_empleado` (`Id_Empleado`),
+  CONSTRAINT `FK_telefonooEmpleado_tipoTelefono`
+    FOREIGN KEY (`Id_tipo_telefono`)
+    REFERENCES `consisa`.`tbl_tipo_telefono` (`Id_tipo_telefono`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
-    -- Calcular las vacaciones acumuladas basadas en el tipo de contrato y la antigüedad
-    IF NEW.Id_Tipo_Contrato = (SELECT Id_Tipo_Contrato FROM tbl_tipo_contrato WHERE Nombre_Contrato = 'Outsourcing') THEN
-        SET vacaciones_acumuladas = (10 / (12 * 30)) * antiguedad;
-    ELSEIF NEW.Id_Tipo_Contrato = (SELECT Id_Tipo_Contrato FROM tbl_tipo_contrato WHERE Nombre_Contrato = 'Permanente') THEN
-        IF antiguedad < 365 THEN
-            SET vacaciones_acumuladas = (10 / (12 * 30)) * antiguedad;
-        ELSEIF antiguedad < 730 THEN
-            SET vacaciones_acumuladas = (12 / (24 * 30)) * antiguedad;
-        ELSEIF antiguedad < 1095 THEN
-            SET vacaciones_acumuladas = (15 / (36 * 30)) * antiguedad;
-        ELSE
-            SET vacaciones_acumuladas = (20 / (48 * 30)) * antiguedad;
-        END IF;
-    ELSE
-        SET vacaciones_acumuladas = 0; -- Si el tipo de contrato no coincide con 'Outsourcing' o 'Permanente', establecer a 0
-    END IF;
 
-    -- Asignar el valor calculado a la columna Cantidad_Acumulada_Vacaciones en la nueva fila a insertar
-    SET NEW.Cantidad_Acumulada_Vacaciones = vacaciones_acumuladas;
-END;
-//
-DELIMITER ;
-
--- Dump completed on 2024-06-02 15:04:45
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
