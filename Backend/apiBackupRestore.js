@@ -12,7 +12,7 @@ router.use(fileUpload());
 const dbConfig = {
     host: 'localhost',
     user: 'root',
-    password: '1234proyecto_',
+    password: '',
     database: 'consisa'
 };
 

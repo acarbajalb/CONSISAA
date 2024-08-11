@@ -554,7 +554,29 @@ CREATE TABLE `tbl_empleado_movimientovacaciones` (
   CONSTRAINT `FK_EmpleadoMovimientoVacaciones_MovimientoVacaciones` FOREIGN KEY (`Id_MovimientoVacaciones`) REFERENCES `tbl_movimiento_vacaciones` (`Id_MovimientoVacaciones`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `tbl_puesto_departamento` (
+  `Id_departamento` int NOT NULL,
+  `Id_puesto` int NOT NULL,
+  `Id_area` int NOT NULL,
+  `Creado_por` varchar(15) NOT NULL,
+  `Modificado_por` varchar(15) NOT NULL,
+  `Fecha_creacion` datetime NOT NULL,
+  `Fecha_modificacion` datetime NOT NULL,
+  PRIMARY KEY (`Id_departamento`,`Id_puesto`,`Id_area`),
+  KEY `FK_puesto/departamento_Puesto_idx` (`Id_puesto`),
+  KEY `FK_puesto/departamento_Area_idx` (`Id_area`),
+  CONSTRAINT `FK_puesto/departamento_Area` FOREIGN KEY (`Id_area`) REFERENCES `tbl_area` (`Id_area`),
+  CONSTRAINT `FK_puesto/departamento_departamento ` FOREIGN KEY (`Id_departamento`) REFERENCES `tbl_departamento` (`Id_departamento`),
+  CONSTRAINT `FK_puesto/departamento_Puesto` FOREIGN KEY (`Id_puesto`) REFERENCES `tbl_puesto` (`Id_Puesto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO tbl_puesto_departamento (Id_departamento, Id_puesto, Id_area, Creado_por, Modificado_por, Fecha_creacion, Fecha_modificacion) VALUES
+(2, 8, 1, 'ROCKETMIND', 'ROCKETMIND', '2024-04-21 21:21:41.000', '2024-04-21 21:21:41.000'),
+(2, 9, 1, 'ROCKETMIND', 'ROCKETMIND', '2024-04-21 21:26:20.000', '2024-04-21 21:26:20.000'),
+(2, 10, 1, 'ROCKETMIND', 'ROCKETMIND', '2024-04-23 04:01:02.000', '2024-04-23 04:01:02.000'),
+(2, 11, 1, 'ROCKETMIND', 'ROCKETMIND', '2024-04-23 04:41:06.000', '2024-04-23 04:41:06.000'),
+(2, 12, 1, 'ROCKETMIND', 'ROCKETMIND', '2024-08-08 20:23:51.000', '2024-08-08 20:23:51.000'),
+(3, 7, 1, 'ROCKETMIND', 'ROCKETMIND', '2024-04-21 13:35:27.000', '2024-04-21 13:35:27.000');
 
 CREATE TABLE `tbl_ms_bitacora` (
   `Id_bitacora` int NOT NULL AUTO_INCREMENT,
